@@ -16,8 +16,11 @@ function setupExpress() {
 }
 function startServer() {
     var port;
-    var portArg = process.argv[2];
-    if ((0, utils_1.isInteger)(portArg)) {
+    var portEnv = process.env.PORT, portArg = process.argv[2];
+    if ((0, utils_1.isInteger)(portEnv)) {
+        port = parseInt(portEnv);
+    }
+    if (!port && (0, utils_1.isInteger)(portArg)) {
         port = parseInt(portArg);
     }
     if (!port) {
