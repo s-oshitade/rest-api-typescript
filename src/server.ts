@@ -1,5 +1,17 @@
+import * as dotenv from "dotenv";
+
+const result = dotenv.config();
+
+if(result.error) {
+    console.log(`Error loading environment variables, aborting.`);
+    process.exit(1);
+}
+
+console.log(process.env.PORT)
+
 import * as express from 'express';
 import {root} from "./routes/root";
+import {isInteger} from "./utils";
 
 const app = express();
 
@@ -12,9 +24,20 @@ function setupExpress() {
 
 
 function startServer() {
+  let port: number;
 
-  app.listen(9000, () => {
-      console.log(`HTTP REST API Server is now running at http://localhost:9000`);
+  const portArg = process.argv[2];
+
+  if (isInteger(portArg)) {
+      port = parseInt(portArg);
+  }
+
+  if(!port) {
+      port = 9000;
+  }
+
+  app.listen(port, () => {
+      console.log(`HTTP REST API Server is now running at http://localhost:${port}`);
   })
 
 }
