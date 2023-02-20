@@ -1,0 +1,22 @@
+{
+  "name": "rest-api-typescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-oshitade/rest-api-typescript.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/s-oshitade/rest-api-typescript/issues"
+  },
+  "homepage": "https://github.com/s-oshitade/rest-api-typescript#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
