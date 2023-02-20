@@ -1,6 +1,5 @@
 REST-API PROJECT 
 - TypeScript
-- Express
-- Node
 - TypeORM
+- Express
 - PostgreSQL
