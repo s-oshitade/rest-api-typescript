@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var dotenv = require("dotenv");
 var result = dotenv.config();
 if (result.error) {
+    //This is the only place in the application where console.log is used
     console.log("Error loading environment variables, aborting.");
     process.exit(1);
 }
@@ -10,6 +11,7 @@ console.log(process.env.PORT);
 var express = require("express");
 var root_1 = require("./routes/root");
 var utils_1 = require("./utils");
+var logger_1 = require("./logger");
 var app = express();
 function setupExpress() {
     app.route("/").get(root_1.root);
@@ -27,7 +29,7 @@ function startServer() {
         port = 9000;
     }
     app.listen(port, function () {
-        console.log("HTTP REST API Server is now running at http://localhost:".concat(port));
+        logger_1.logger.info("HTTP REST API Server is now running at http://localhost:".concat(port));
     });
 }
 setupExpress();
