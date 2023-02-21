@@ -1,13 +1,15 @@
 {
   "name": "rest-api-typescript",
   "version": "1.0.0",
-  "description": "",
+  "description": "REST API project with Express and TypeORM",
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc",
     "start-server": "node dist/server.js",
     "start-dev-server": "tsc-watch --onSuccess \"node dist/server.js 9002\"",
-    "dev": "npm-run-all clean build start-dev-server"
+    "dev": "npm-run-all clean build start-dev-server",
+    "populate-db": "npm-run-all clean build run-populate-db-script",
+    "run-populate-db-script": "node dist/models/populate-db.js"
   },
   "repository": {
     "type": "git",
