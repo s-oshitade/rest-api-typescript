@@ -8,6 +8,7 @@ if (result.error) {
     process.exit(1);
 }
 console.log(process.env.PORT);
+require("reflect-metadata");
 var express = require("express");
 var root_1 = require("./routes/root");
 var utils_1 = require("./utils");
