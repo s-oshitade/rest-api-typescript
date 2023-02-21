@@ -12,6 +12,7 @@ var express = require("express");
 var root_1 = require("./routes/root");
 var utils_1 = require("./utils");
 var logger_1 = require("./logger");
+var data_source_1 = require("./data-source");
 var app = express();
 function setupExpress() {
     app.route("/").get(root_1.root);
@@ -32,5 +33,13 @@ function startServer() {
         logger_1.logger.info("HTTP REST API Server is now running at http://localhost:".concat(port));
     });
 }
-setupExpress();
-startServer();
+data_source_1.AppDataSource.initialize()
+    .then(function () {
+    logger_1.logger.info("The datasource has been initialized successfully.");
+    setupExpress();
+    startServer();
+})
+    .catch(function (err) {
+    logger_1.logger.error("Error during the datasource initialization.", err);
+    process.exit(1);
+});

@@ -8,6 +8,11 @@ export const AppDataSource = new DataSource({
     port: parseInt(process.env.DB_PORT),
     database: process.env.DB_NAME,
     ssl: true,
+    extra: { //This is heroku-specific
+      ssl: {
+          rejectUnauthorized: false
+      }
+    },
     entities: [
         //Add the entities of data model here
     ],
