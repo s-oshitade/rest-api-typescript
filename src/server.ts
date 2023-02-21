@@ -14,6 +14,7 @@ import * as express from 'express';
 import {root} from "./routes/root";
 import {isInteger} from "./utils";
 import {logger} from "./logger";
+import {AppDataSource} from "./data-source";
 
 const app = express();
 
@@ -48,6 +49,13 @@ function startServer() {
 
 }
 
-setupExpress();
-
-startServer();
+AppDataSource.initialize()
+    .then(() => {
+        logger.info(`The datasource has been initialized successfully.`);
+        setupExpress();
+        startServer();
+    })
+    .catch(err => {
+        logger.error(`Error during the datasource initialization.`, err);
+        process.exit(1);
+    })
