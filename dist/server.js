@@ -14,9 +14,11 @@ var root_1 = require("./routes/root");
 var utils_1 = require("./utils");
 var logger_1 = require("./logger");
 var data_source_1 = require("./data-source");
+var get_all_courses_1 = require("./routes/get-all-courses");
 var app = express();
 function setupExpress() {
     app.route("/").get(root_1.root);
+    app.route("/api/courses").get(get_all_courses_1.getAllCourses);
 }
 function startServer() {
     var port;
