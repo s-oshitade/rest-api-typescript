@@ -1,6 +1,7 @@
 import {DataSource} from "typeorm";
 import {Course} from "./models/course";
 import {Lesson} from "./models/lesson";
+import {User} from "./models/user";
 
 export const AppDataSource = new DataSource({
     type: "postgres",
@@ -18,7 +19,8 @@ export const AppDataSource = new DataSource({
     entities: [
         //Add the entities of data model here
         Course,
-        Lesson
+        Lesson,
+        User
     ],
     synchronize: true, //Only set this property to true in development mode
     logging: true //Prints all SQL queries to the console
